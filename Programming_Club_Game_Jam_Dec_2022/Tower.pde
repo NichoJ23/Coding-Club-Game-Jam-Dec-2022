@@ -33,4 +33,12 @@ class Tower {
     // Make some sort of upgrade here
     
   }
+  
+  void takeDamage(){
+    health--;
+    
+    if (health <= 0) {
+      // GAME OVER
+    }
+  }
 }

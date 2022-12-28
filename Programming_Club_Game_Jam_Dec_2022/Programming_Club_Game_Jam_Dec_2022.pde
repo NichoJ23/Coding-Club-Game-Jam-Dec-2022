@@ -2,6 +2,7 @@
 ArrayList<Character> keysDown = new ArrayList<Character>(); // Stores all pressed keys
 Player player;
 Tower tower;
+ArrayList<Enemy> enemies;
 int coins;
 
 void setup(){
@@ -9,6 +10,7 @@ void setup(){
   
   player = new Player(width / 2, 100, 3f);
   tower = new Tower(5);
+  enemies = new ArrayList<Enemy>();
   coins = 0;
   
   testCode();
@@ -25,10 +27,27 @@ void draw(){
 void game(){
   background(240, 247, 244);
   
+  if (frameCount % (240 - frameCount / 10) == 0){
+    Enemy e = new Enemy(0f, 0f, 1f + frameCount / 1800f);
+    enemies.add(e);
+  }
+  
   player.drawPlayer();
   player.movePlayer();
   
   tower.drawTower();
+  
+  for (int i = 0; i < enemies.size(); i++){
+    Enemy e = enemies.get(i);
+    
+    e.moveEnemy();
+    e.drawEnemy();
+    
+    if (getDistance(e.pos.x, e.pos.y, width / 2f, height / 2f) < 125f){
+      tower.takeDamage();
+      enemies.remove(i);
+    }
+  }
   
   fill(50, 41, 47);
   textSize(30);
@@ -59,3 +78,10 @@ void mouseClicked(){
     }
   }
 }
+
+float getDistance(float x1, float y1, float x2, float y2){
+    float dx = abs(x1 - x2);
+    float dy = abs(y1 - y2);
+    
+    return sqrt(dx * dx + dy * dy);
+  }
