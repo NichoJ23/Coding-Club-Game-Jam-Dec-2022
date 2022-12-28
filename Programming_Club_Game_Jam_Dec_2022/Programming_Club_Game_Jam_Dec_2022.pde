@@ -46,6 +46,7 @@ void game(){
     if (getDistance(e.pos.x, e.pos.y, width / 2f, height / 2f) < 125f){
       tower.takeDamage();
       enemies.remove(i);
+      i--;
     }
   }
   
