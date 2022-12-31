@@ -22,6 +22,7 @@ void testCode(){
 
 void draw(){
   game();
+  detectClicks();
 }
 
 void game(){
@@ -68,16 +69,7 @@ void keyReleased(){
 }
 
 void mouseClicked(){
-  // Check if the mouse is on the UPGRADE button
-  if (mouseX > width / 2 - 75 && mouseX < width / 2 + 75 && mouseY > height / 2 - 30 && mouseY < height / 2 + 30){
-    if (coins > tower.upgradeCost){
-      tower.upgrade();
-      
-      // For now i'll increase move speed as the upgrade
-      
-      player.speed += 0.5f;
-    }
-  }
+  
 }
 
 float getDistance(float x1, float y1, float x2, float y2){

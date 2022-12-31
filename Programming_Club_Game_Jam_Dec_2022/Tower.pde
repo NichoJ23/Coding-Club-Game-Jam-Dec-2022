@@ -10,25 +10,25 @@ class Tower {
   }
   
   void drawTower(){
-    fill(112, 93, 86);
+    fill(183, 48, 199);
     circle(width / 2, height / 2, 200);
     
-    drawButton();
-  }
-  
-  void drawButton(){
-    fill(50, 41, 47);
-    rect(width / 2 - 75, height / 2 - 30, 150, 60);
-    
+    if(button("circle", width/2, height/2, 150, 150, 0, "fill", #882393, 10)) {
+      upgrade(); 
+    }
     fill(240, 247, 244);
     textSize(23);
-    text("UPGRADE - " + upgradeCost, width / 2 - 60, height / 2 + 10);
+    textAlign(CENTER);
+    text("UPGRADE\n$" + upgradeCost, width / 2, height / 2);
   }
   
+  
   void upgrade(){
+    if(coins < upgradeCost) return;
     tier += 1;
     coins -= upgradeCost;
     upgradeCost += 5;
+    player.speed += 0.5;
     
     // Make some sort of upgrade here
     

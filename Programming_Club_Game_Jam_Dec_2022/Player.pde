@@ -3,17 +3,19 @@ class Player {
   // Can't remember how to do Vector2's so imma use two ints for pos
   PVector pos;
   float speed;
+  int size;
   
   Player(int x, int y, float speed) {
     pos = new PVector(0, 0);
     pos.x = x;
     pos.y = y;
     this.speed = speed;
+    size = 50;
   }
   
   void drawPlayer() {
     fill(153, 225, 217);
-    circle(pos.x, pos.y, 50); // Pretty basic, could change if have time
+    circle(pos.x, pos.y, size); // Pretty basic, could change if have time
   }
   
   void movePlayer(){
@@ -45,6 +47,11 @@ class Player {
     if (towerDST < 125f){
       pos.y -= vel.y;
     }
+    
+    if(pos.x > width-size/2) pos.x = width-size/2;  // Prevent player from going outside of boundary
+    if(pos.x < size/2) pos.x = size/2;
+    if(pos.y > height-size/2) pos.y = height-size/2;
+    if(pos.y < size/2) pos.y = size/2;
   }
   
   float getDistance(float x1, float y1, float x2, float y2){
