@@ -8,8 +8,8 @@ int coins;
 void setup(){
   size(600, 600);
   
-  player = new Player(width / 2, 100, 3f);
-  tower = new Tower(5);
+  player = new Player(width / 2f, 100, 3f);
+  tower = new Tower(width / 2f, height / 2f);
   enemies = new ArrayList<Enemy>();
   coins = 0;
   
@@ -27,24 +27,23 @@ void draw(){
 
 void game(){
   background(240, 247, 244);
-  
-  if (frameCount % (240 - frameCount / 10) == 0){
-    Enemy e = new Enemy(0f, 0f, 1f + frameCount / 1800f);
+  if (frameCount % 20 == 0){
+    Enemy e = new Enemy(0f, 0f, 2);
     enemies.add(e);
   }
   
-  player.drawPlayer();
-  player.movePlayer();
+  player.show();
+  player.move();
   
-  tower.drawTower();
+  tower.show();
   
   for (int i = 0; i < enemies.size(); i++){
     Enemy e = enemies.get(i);
     
-    e.moveEnemy();
-    e.drawEnemy();
+    e.move();
+    e.show();
     
-    if (getDistance(e.pos.x, e.pos.y, width / 2f, height / 2f) < 125f){
+    if (e.pos.dist(tower.pos) < 125f){
       tower.takeDamage();
       enemies.remove(i);
       i--;
@@ -71,10 +70,3 @@ void keyReleased(){
 void mouseClicked(){
   
 }
-
-float getDistance(float x1, float y1, float x2, float y2){
-    float dx = abs(x1 - x2);
-    float dy = abs(y1 - y2);
-    
-    return sqrt(dx * dx + dy * dy);
-  }

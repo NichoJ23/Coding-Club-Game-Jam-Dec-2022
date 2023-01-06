@@ -1,10 +1,9 @@
-class Enemy {
-  PVector pos;
+class Enemy extends GameObject {
   PVector vel;
   float speed;
   
-  Enemy(float x, float y, float speed){
-    pos = new PVector(x, y);
+  Enemy(float x, float y, int speed) {
+    super(x, y, 50);
     this.speed = speed;
     
     positionRandom();
@@ -28,12 +27,11 @@ class Enemy {
     }
   }
   
-  void moveEnemy(){
+  void move(){
     pos.add(vel);
   }
   
-  void drawEnemy(){
-    fill(133, 126, 97);
-    circle(pos.x, pos.y, 50);
+  void show() {
+    super.show(color(133, 126, 97));
   }
 }

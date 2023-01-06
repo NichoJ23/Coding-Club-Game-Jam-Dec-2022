@@ -1,25 +1,24 @@
-class Tower {
-  int health;
+class Tower extends GameObject {
   int tier;
   int upgradeCost;
   
-  Tower(int health){
-    this.health = health;
+  Tower(float x, float y) {
+    super(x, y, 200);
     tier = 1;
     upgradeCost = 5;
   }
   
-  void drawTower(){
+  void show(){
     fill(183, 48, 199);
-    circle(width / 2, height / 2, 200);
+    circle(pos.x, pos.y, size);
     
-    if(button("circle", width/2, height/2, 150, 150, 0, "fill", #882393, 10)) {
+    if(button("circle", pos.x, pos.y, 150, 150, 0, "fill", #882393, 10)) {
       upgrade(); 
     }
     fill(240, 247, 244);
     textSize(23);
     textAlign(CENTER);
-    text("UPGRADE\n$" + upgradeCost, width / 2, height / 2);
+    text("UPGRADE\n$" + upgradeCost, pos.x, pos.y);
   }
   
   
