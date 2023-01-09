@@ -10,6 +10,8 @@ class Tower extends GameObject {
   
   void show(){
     fill(183, 48, 199);
+    stroke(0);
+    strokeWeight(5);
     circle(pos.x, pos.y, size);
     
     if(button("circle", pos.x, pos.y, 150, 150, 0, "fill", #882393, 10)) {

@@ -3,6 +3,7 @@ ArrayList<Character> keysDown = new ArrayList<Character>(); // Stores all presse
 Player player;
 Tower tower;
 ArrayList<Enemy> enemies;
+Weapon weapon;
 int coins;
 
 void setup(){
@@ -11,6 +12,7 @@ void setup(){
   player = new Player(width / 2f, 100, 3f);
   tower = new Tower(width / 2f, height / 2f);
   enemies = new ArrayList<Enemy>();
+  weapon = new Weapon();
   coins = 0;
   
   testCode();
@@ -32,9 +34,9 @@ void game(){
     enemies.add(e);
   }
   
+  weapon.show();
   player.show();
   player.move();
-  
   tower.show();
   
   for (int i = 0; i < enemies.size(); i++){
@@ -43,11 +45,22 @@ void game(){
     e.move();
     e.show();
     
-    if (e.pos.dist(tower.pos) < 125f){
+    
+    if (e.pos.dist(tower.pos) < e.size/2 + tower.size/2){
       tower.takeDamage();
       enemies.remove(i);
       i--;
     }
+    
+    else if(e.health <= 0) {
+      enemies.remove(i);
+      i--;
+    }   
+  }
+  
+  
+  if(mouseClick) {
+   weapon.attack(); 
   }
   
   fill(50, 41, 47);
@@ -65,8 +78,4 @@ void keyReleased(){
   if (keysDown.contains(key)){
     keysDown.remove(keysDown.indexOf(key));
   }
-}
-
-void mouseClicked(){
-  
 }

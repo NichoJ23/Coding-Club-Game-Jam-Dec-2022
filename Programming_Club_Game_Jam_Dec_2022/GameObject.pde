@@ -10,6 +10,9 @@ class GameObject {
   
   void show(color col) {
     fill(col);
+    stroke(0);
+    strokeWeight(5);
     circle(pos.x, pos.y, size);
   }
+  
 }
