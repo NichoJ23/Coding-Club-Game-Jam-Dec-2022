@@ -32,9 +32,7 @@ class Weapon {
        attackAng += angSpeed;
        ang = attackAng;
 
-        
-        
-       if(attackTimer <= 2*PI) println(round(attackTimer) +" -- " + attackAng);
+       //if(attackTimer <= 2*PI) println(round(attackTimer) +" -- " + attackAng);
        
        if(ang >= initialAng + 2*PI) {
          attacking = false;
@@ -52,7 +50,7 @@ class Weapon {
     
     
     stroke(0);
-    strokeWeight(10);
+    strokeWeight(5);
     //line(player.pos.x, player.pos.y, ang.x, ang.y);
     pushMatrix();
       translate(player.pos.x, player.pos.y);

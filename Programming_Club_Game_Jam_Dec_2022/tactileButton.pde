@@ -9,7 +9,6 @@ d: Pop out distance
 
 
 boolean button(String shape, float x,float y, float w,float h, float r, String mode, color c, float d) {
-  rectMode(CENTER);
   drawButton(shape, x,y, w,h, r);
   switch(shape) {  // Detects mouse hover differently for different shapes
     case "rect":

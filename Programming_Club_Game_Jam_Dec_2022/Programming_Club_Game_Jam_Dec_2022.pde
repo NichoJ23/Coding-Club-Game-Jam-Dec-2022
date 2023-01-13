@@ -6,14 +6,20 @@ ArrayList<Enemy> enemies;
 Weapon weapon;
 int coins;
 
+PFont bestFont;
+
 void setup(){
   size(600, 600);
+  
+  rectMode(CENTER);
   
   player = new Player(width / 2f, 100, 3f);
   tower = new Tower(width / 2f, height / 2f);
   enemies = new ArrayList<Enemy>();
   weapon = new Weapon();
   coins = 0;
+  
+  bestFont = createFont("data/font.ttf", 1);
   
   testCode();
 }
@@ -29,8 +35,14 @@ void draw(){
 
 void game(){
   background(240, 247, 244);
-  if (frameCount % 20 == 0){
-    Enemy e = new Enemy(0f, 0f, 2);
+  if (frameCount % 50 == 0){
+    Enemy e = new Enemy(0f, 0f, 0.5f);
+    e.col = color(133, 126, 97);
+    enemies.add(e);
+  }
+  if (frameCount % 1000 == 0) {
+    Enemy e = new Enemy(0f, 0f, 1);
+    e.col = #ff40dc;
     enemies.add(e);
   }
   

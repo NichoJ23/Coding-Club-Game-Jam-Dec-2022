@@ -4,7 +4,7 @@ class Player extends GameObject {
   float speed;
 
   Player(float x, float y, float speed) {
-    super(x, y, 50);
+    super(x, y, 25);
     this.speed = speed;
   }
   
