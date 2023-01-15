@@ -36,7 +36,7 @@ class Tower extends GameObject {
     rect(100, 30, map(health, 0, maxHealth, 0, 400), 20, 10);
     rectMode(CENTER);
     
-    println(health);
+    //println(health);
   }
   
   

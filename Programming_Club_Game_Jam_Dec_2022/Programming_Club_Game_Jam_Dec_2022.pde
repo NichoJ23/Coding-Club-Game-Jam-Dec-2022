@@ -51,14 +51,19 @@ void game(){
   player.move();
   tower.show();
   
-  for (int i = 0; i < enemies.size(); i++){
+  for(int i = 0; i < enemies.size(); i++){
     Enemy e = enemies.get(i);
     
     e.move();
     e.show();
     
+    for(PVector w : weapon.swordPoints) {
+      if(e.pos.dist(w) < e.size/2 && weapon.attacking) {
+        e.health = 0; 
+      }
+    }
     
-    if (e.pos.dist(tower.pos) < e.size/2 + tower.size/2){
+    if(e.pos.dist(tower.pos) < e.size/2 + tower.size/2){
       tower.takeDamage();
       enemies.remove(i);
       i--;
