@@ -19,12 +19,12 @@ class Tower extends GameObject {
     circle(pos.x, pos.y, size);
     
     if(button("circle", pos.x, pos.y, 125, 125, 0, "fill", #882393, 10)) {
-      upgrade();
+      mode = Mode.PAUSE;
     }
     fill(0);
     textAlign(CENTER);
     textFont(bestFont, 18);
-    text("UPGRADE\n$" + upgradeCost, pos.x, pos.y);
+    text("PauseMenu", pos.x, pos.y);
     
     // show health
     rectMode(CORNER);

@@ -75,11 +75,3 @@ void drawButton(String shape, float x,float y, float w,float h, float r) {  // D
     case "circle": circle(x,y, w);    break;  // Circle
   } 
 }
-
-boolean mouseClick = false;
-boolean wasPressed = false;
-void detectClicks() {
-  mouseClick = false;
-  if(mousePressed) wasPressed = true;
-  if(wasPressed && !mousePressed) { mouseClick = true; wasPressed = false;}
-}
