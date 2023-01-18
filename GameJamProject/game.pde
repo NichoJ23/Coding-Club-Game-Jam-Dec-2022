@@ -29,11 +29,15 @@ void game(){
     if(e.pos.dist(tower.pos) < e.size/2 + tower.size/2){
       tower.takeDamage(e.damage);
       enemies.remove(i);
+      hitPlayer.play();
+      hitPlayer.rewind();
       i--;
     }
     
     else if(e.health <= 0) {
       enemies.remove(i);
+      hitPlayer.play();
+      hitPlayer.rewind();
       i--;
     }   
   }

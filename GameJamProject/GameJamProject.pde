@@ -1,3 +1,7 @@
+import ddf.minim.*;
+
+Minim minim;
+AudioPlayer audioPlayer, hitPlayer;
 
 ArrayList<Character> keysDown = new ArrayList<Character>(); // Stores all pressed keys
 Player player;
@@ -32,7 +36,13 @@ void setup(){
   
   bestFont = createFont("data/font.ttf", 1);
   
-  testCode();
+  minim = new Minim(this);
+  
+  audioPlayer = minim.loadFile(dataPath("gameplay.mp3"));
+  audioPlayer.setGain(-20);
+  audioPlayer.loop();
+
+  hitPlayer = minim.loadFile(dataPath("hitsound.mp3"));
 }
 
 void reset() {
@@ -45,10 +55,6 @@ void reset() {
   coins = 0;
   mode = Mode.GAME;
   counter = 0;
-}
-
-void testCode(){
-  
 }
 
 void draw(){
