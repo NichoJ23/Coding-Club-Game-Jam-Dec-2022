@@ -3,7 +3,7 @@ void game(){
   
   background(240, 247, 244);
   
-  normSpawnOffset = pow(counter / 150, 1.2);
+  normSpawnOffset = pow(counter / 150, 1.1);
   normSpawnOffset = min(40, normSpawnOffset);
   
   enemySpeedOffset = pow(counter / 1000, 1.2);

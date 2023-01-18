@@ -24,7 +24,7 @@ enum Mode {
 
 Mode mode;
 
-final int UPGRADEINC = 15;  // Price increment after each subsequence upgrade
+final int UPGRADEINC = 10;  // Price increment after each subsequence upgrade
 
 // UPGRADE PARAMETERS //
 final int WEAPON_STARTING_COST = 66;
@@ -70,7 +70,7 @@ void reset() {
   enemies = new ArrayList<Enemy>();
   coins = 0;
   score = 0;
-  mode = Mode.GAME;
+  mode = Mode.INTRO;
   counter = 0;
   
   weaponCost = WEAPON_STARTING_COST;
