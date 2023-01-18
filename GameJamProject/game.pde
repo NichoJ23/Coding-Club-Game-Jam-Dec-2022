@@ -2,12 +2,18 @@ void game(){
   counter++;
   
   background(240, 247, 244);
-  if (counter % 50 == 0){
-    Enemy e = new Enemy(0f, 0f, 0.5f, 1);
+  
+  normSpawnOffset = pow(counter / 150, 1.2);
+  normSpawnOffset = min(40, normSpawnOffset);
+  
+  enemySpeedOffset = pow(counter / 1000, 1.2);
+  
+  if (counter % (50 - normSpawnOffset) < 1) {
+    Enemy e = new Enemy(0f, 0f, 0.5f + enemySpeedOffset / 10, 1);
     e.col = color(133, 126, 97);
     enemies.add(e);
   }
-  if (counter % 1000 == 0) {
+  if (counter % (1000 - normSpawnOffset * 20) < 1) {
     Enemy e = new Enemy(0f, 0f, 1.5, 5);
     e.col = #ff40dc;
     enemies.add(e);
@@ -22,8 +28,8 @@ void game(){
     for(PVector w : weapon.swordPoints) {  // Detect collision with weapon
       if(e.pos.dist(w) < e.size/2 && weapon.attacking) {
         e.health = 0;
-        coins++;
-        score++;
+        coins += 2;
+        score += 2;
       }
     }
     

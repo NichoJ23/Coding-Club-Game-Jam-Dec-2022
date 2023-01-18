@@ -42,6 +42,8 @@ final float SPEED_INC = 0.3;  // Amount to increase speed by
 float defRange = 70;  // Weapon range
 float attackSpeed = 1; // Weapon attack speed
 
+float normSpawnOffset = 0;
+float enemySpeedOffset = 0;
 
 void setup(){
   size(600, 600);
