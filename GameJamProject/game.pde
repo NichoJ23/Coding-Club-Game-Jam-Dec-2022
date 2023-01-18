@@ -8,7 +8,7 @@ void game(){
     enemies.add(e);
   }
   if (counter % 1000 == 0) {
-    Enemy e = new Enemy(0f, 0f, 1, 2);
+    Enemy e = new Enemy(0f, 0f, 1.5, 5);
     e.col = #ff40dc;
     enemies.add(e);
   }
@@ -23,6 +23,7 @@ void game(){
       if(e.pos.dist(w) < e.size/2 && weapon.attacking) {
         e.health = 0;
         coins++;
+        score++;
       }
     }
     
@@ -52,6 +53,17 @@ void game(){
   }
   
   fill(50, 41, 47);
-  textSize(30);
-  text("COINS: " + coins, width - 130, 30);
+  textSize(25);
+  textAlign(RIGHT);
+  text("COINS: " + coins, width - 110, 30);
+  textAlign(CENTER);
+  textSize(15);
+  text("press ESC for upgrades", width/2, height-30);
+  
+  // PAUSE
+  if(esc) {
+    esc = false;
+    mode = Mode.PAUSE;
+  }
+  
 }

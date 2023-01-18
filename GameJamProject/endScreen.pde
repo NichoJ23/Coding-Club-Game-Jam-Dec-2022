@@ -12,7 +12,7 @@ void endScreen() {
   text("GAME OVER", width / 2, 200);
   
   textSize(35);
-  text("Your Score: " + (coins + tower.tier * 5 - 5), width / 2, 240);
+  text("Your Score: " + (score + tower.tier * 5 - 5), width / 2, 240);
   
   textSize(50);
   text("Play", width / 2, 380);

@@ -9,6 +9,7 @@ Tower tower;
 ArrayList<Enemy> enemies;
 Weapon weapon;
 int coins;
+int score;
 int counter = 0;
 
 PFont bestFont;
@@ -21,6 +22,24 @@ enum Mode {
 }
 
 Mode mode;
+
+
+// UPGRADE PARAMETERS //
+final int WEAPON_COST = 125;
+final int WEAPON_RANGEINC = 20;  // Amount to increrase range by
+final float WEAPON_SPEEDINC = 0.2;  // Amount to increase speed by
+
+final int HEALTH_COST = 75;
+final int HEALTH_REGEN = 10;  // Amount of HP to heal by
+
+final int SPEED_COST = 15;
+final int SPEED_INC = 1;  // Amount to increase speed by
+
+
+// DEFAULT PARAMETERS //
+float defRange = 70;  // Weapon range
+float attackSpeed = 1; // Weapon attack speed
+
 
 void setup(){
   size(600, 600);
@@ -53,6 +72,7 @@ void reset() {
   tower.upgradeCost = 5;
   enemies = new ArrayList<Enemy>();
   coins = 0;
+  score = 0;
   mode = Mode.GAME;
   counter = 0;
 }

@@ -1,5 +1,5 @@
 class Tower extends GameObject {
-  final int maxHealth = 10; // used to be 100, I changed for testing purposes;
+  final int maxHealth = 50; 
   
   int tier;
   int upgradeCost;
@@ -18,13 +18,6 @@ class Tower extends GameObject {
     strokeWeight(5);
     circle(pos.x, pos.y, size);
     
-    if(button("circle", pos.x, pos.y, 125, 125, 0, "fill", #882393, 10)) {
-      mode = Mode.PAUSE;
-    }
-    fill(0);
-    textAlign(CENTER);
-    textFont(bestFont, 18);
-    text("PauseMenu", pos.x, pos.y);
     
     // show health
     rectMode(CORNER);

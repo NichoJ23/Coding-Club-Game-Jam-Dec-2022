@@ -3,13 +3,16 @@ class Weapon {
   float ang;
   float initialAng;
   float range;
-  float defRange;
   boolean attacking;
   float attackTimer;
   PVector[] swordPoints;
   
+  // sword animation math part 1
+  final float d = 45;
+  final float h = PI/8;
+  final float q = (2*PI*d)/((2*PI)-acos(-PI/(PI+2.0*h)));
+  
   Weapon() {
-    defRange = 50;
     range = 0;
     attacking = false;
   }
@@ -18,13 +21,12 @@ class Weapon {
 
     // Animate //
      if(attacking) {
-       attackTimer += 1;
+       attackTimer += attackSpeed;
 
-       float x = attackTimer;
-       float d = 45;
-       float h = PI/8;
-       float q = (2*PI*d)/((2*PI)-acos(-PI/(PI+2.0*h)));
-       float f = -(PI+2*h)*cos((2*PI/q)*(x+(q/2)-d))+PI;
+
+       // sword animation math part 2;
+       float f = -(PI+2*h)*cos((2*PI/q)*(attackTimer+(q/2)-d))+PI;
+       
 
        ang = initialAng + f;
        
@@ -57,8 +59,11 @@ class Weapon {
     // Collision points //
     swordPoints = new PVector[] {
       new PVector(player.pos.x+(player.size/2+range+defRange)*cos(ang), player.pos.y+(player.size/2+range+defRange)*sin(ang)),
-      new PVector(player.pos.x+(player.size/2+(range+defRange)/2)*cos(ang), player.pos.y+(player.size/2+(range+defRange)/2)*sin(ang)),
-      new PVector(player.pos.x+(player.size/2+(range+defRange)/4)*cos(ang), player.pos.y+(player.size/2+(range+defRange)/4)*sin(ang))
+      new PVector(player.pos.x+(player.size/2+(range+defRange)*0.8)*cos(ang), player.pos.y+(player.size/2+(range+defRange)*0.8)*sin(ang)),
+      new PVector(player.pos.x+(player.size/2+(range+defRange)*0.6)*cos(ang), player.pos.y+(player.size/2+(range+defRange)*0.6)*sin(ang)),
+      new PVector(player.pos.x+(player.size/2+(range+defRange)*0.4)*cos(ang), player.pos.y+(player.size/2+(range+defRange)*0.4)*sin(ang)),
+      new PVector(player.pos.x+(player.size/2+(range+defRange)*0.2)*cos(ang), player.pos.y+(player.size/2+(range+defRange)*0.2)*sin(ang)),
+      new PVector(player.pos.x+(player.size/2+(range+defRange)*0.0)*cos(ang), player.pos.y+(player.size/2+(range+defRange)*0.0)*sin(ang)),
     };
     
     
