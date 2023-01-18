@@ -18,8 +18,9 @@ void pause() {
   
   // Range/Attack Speed
   fill(209, 230, 221);
-  if (button("circle", width/2-150, height/2+50, buttonSize, buttonSize, 0, "fill", #A9D0BF, 10) && coins >= WEAPON_COST) {
-    coins -= WEAPON_COST;
+  if (button("circle", width/2-150, height/2+50, buttonSize, buttonSize, 0, "fill", #A9D0BF, 10) && coins >= weaponCost) {
+    coins -= weaponCost;
+    weaponCost += UPGRADEINC;
     defRange += WEAPON_RANGEINC;
     attackSpeed += WEAPON_SPEEDINC;
   }
@@ -28,8 +29,9 @@ void pause() {
   
   // Health
   fill(209, 230, 221);
-  if (button("circle", width/2, height/2+50, buttonSize, buttonSize, 0, "fill", #A9D0BF, 10) && coins >= HEALTH_COST) {
-    coins -= HEALTH_COST;
+  if (button("circle", width/2, height/2+50, buttonSize, buttonSize, 0, "fill", #A9D0BF, 10) && coins >= healthCost) {
+    coins -= healthCost;
+    healthCost += UPGRADEINC;
     tower.health += HEALTH_REGEN;
   }
   img = loadImage("heart.png");
@@ -37,8 +39,9 @@ void pause() {
   
   // Speed
   fill(209, 230, 221);
-  if (button("circle", width/2+150, height/2+50, buttonSize, buttonSize, 0, "fill", #A9D0BF, 10) && coins >= SPEED_COST) {
-    coins -= SPEED_COST;
+  if (button("circle", width/2+150, height/2+50, buttonSize, buttonSize, 0, "fill", #A9D0BF, 10) && coins >= speedCost) {
+    coins -= speedCost;
+    speedCost += UPGRADEINC;
     player.speed += SPEED_INC;
   }
   img = loadImage("speed.png");
@@ -52,9 +55,9 @@ void pause() {
   text("+HP", width/2, height/2+50 - buttonSize+40);
   text("+SPD", width/2+150, height/2+50 - buttonSize+40);
   
-  text("$"+WEAPON_COST, width/2-150, height/2+50 + buttonSize-30);
-  text("$"+HEALTH_COST, width/2, height/2+50 + buttonSize-30);
-  text("$"+SPEED_COST, width/2+150, height/2+50 + buttonSize-30);
+  text("$"+weaponCost, width/2-150, height/2+50 + buttonSize-30);
+  text("$"+healthCost, width/2, height/2+50 + buttonSize-30);
+  text("$"+speedCost, width/2+150, height/2+50 + buttonSize-30);
   
   text("range: "+defRange+"\nspeed: "+(round(attackSpeed*10)/10)+"x", width/2-150, height/2+50 + buttonSize+10);
   text(tower.health+"/"+tower.maxHealth, width/2, height/2+50 + buttonSize+10);

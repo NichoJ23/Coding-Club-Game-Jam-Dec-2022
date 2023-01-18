@@ -48,17 +48,25 @@ void game(){
   player.move();
   tower.show();
   
+  // show kill counter
+  
   if(mouseClick) {
    weapon.attack(); 
   }
   
-  fill(50, 41, 47);
+  fill(0);
   textSize(25);
   textAlign(RIGHT);
-  text("COINS: " + coins, width - 110, 30);
+  text("Coins: " + coins, width - 110, 30);
   textAlign(CENTER);
   textSize(15);
   text("press ESC for upgrades", width/2, height-30);
+  
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  text("Score:", width/2, height/2-40);
+  textSize(64);
+  text(score+"", width/2, height/2);
   
   // PAUSE
   if(esc) {

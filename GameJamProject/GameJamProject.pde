@@ -11,6 +11,7 @@ Weapon weapon;
 int coins;
 int score;
 int counter = 0;
+int weaponCost, healthCost, speedCost;
 
 PFont bestFont;
 
@@ -23,17 +24,18 @@ enum Mode {
 
 Mode mode;
 
+final int UPGRADEINC = 15;  // Price increment after each subsequence upgrade
 
 // UPGRADE PARAMETERS //
-final int WEAPON_COST = 125;
-final int WEAPON_RANGEINC = 20;  // Amount to increrase range by
-final float WEAPON_SPEEDINC = 0.2;  // Amount to increase speed by
+final int WEAPON_STARTING_COST = 66;
+final int WEAPON_RANGEINC = 10;  // Amount to increrase range by
+final float WEAPON_SPEEDINC = 0.11;  // Amount to increase speed by
 
-final int HEALTH_COST = 75;
+final int HEALTH_STARTING_COST = 75;
 final int HEALTH_REGEN = 10;  // Amount of HP to heal by
 
-final int SPEED_COST = 15;
-final int SPEED_INC = 1;  // Amount to increase speed by
+final int SPEED_STARTING_COST = 30;
+final float SPEED_INC = 0.3;  // Amount to increase speed by
 
 
 // DEFAULT PARAMETERS //
@@ -45,13 +47,8 @@ void setup(){
   size(600, 600);
   
   rectMode(CENTER);
-  
-  player = new Player(width / 2f, 100, 3f);
-  tower = new Tower(width / 2f, height / 2f);
-  enemies = new ArrayList<Enemy>();
-  weapon = new Weapon();
-  coins = 0;
-  mode = Mode.INTRO;
+
+  reset();
   
   bestFont = createFont("data/font.ttf", 1);
   
@@ -65,16 +62,18 @@ void setup(){
 }
 
 void reset() {
-  player.pos.x = width / 2f;
-  player.pos.y = 100;
-  tower.health = tower.maxHealth;
-  tower.tier = 1;
-  tower.upgradeCost = 5;
+  player = new Player(width / 2f, 100, 3f);
+  tower = new Tower(width / 2f, height / 2f);
+  weapon = new Weapon();
   enemies = new ArrayList<Enemy>();
   coins = 0;
   score = 0;
   mode = Mode.GAME;
   counter = 0;
+  
+  weaponCost = WEAPON_STARTING_COST;
+  healthCost = HEALTH_STARTING_COST;
+  speedCost = SPEED_STARTING_COST;
 }
 
 void draw(){
